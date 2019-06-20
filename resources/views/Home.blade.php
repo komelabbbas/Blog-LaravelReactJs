@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Todo (using Laravel and Vue Js)</title>
+        <title>Blog</title>
 
        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
@@ -17,15 +17,16 @@
     </head>
     <body>
 
-       <div class="row">
-            <div class="container-fluid">
-
-                    {{-- React Js Todo List --}}
-                    <div id="React_Object"> </div>
+            {{-- <div class="row">
+                    <div class="container-fluid" id="wholesection">
+                            <div className="col-md-12" id="mainsection">
                     
-            </div>
-       </div>
-      
+           
+                    
+                            </div>
+                     </div>
+           </div> --}}
+           <div id="FRONT-REACTJS"> </div>
       
         <script src="{{ asset('js/app.js') }}"></script>
 
