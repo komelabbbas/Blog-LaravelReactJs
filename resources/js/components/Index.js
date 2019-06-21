@@ -15,6 +15,8 @@ import AdminLogin from './Admin/AdminLogin';
 
 
 export default class Index extends Component {
+
+    
     render() {
 
         
@@ -45,12 +47,11 @@ if (document.getElementById('FRONT-REACTJS')) {
 }
 
 if (document.getElementById('ADMIN-REACTJS')) {
-
     ReactDOM.render(<AdminApp />, document.getElementById('ADMIN-REACTJS'));
 }
 
-if (document.getElementById('ADMIN-LOGIN-REACTJS')) {
+// if (document.getElementById('ADMIN-LOGIN-REACTJS')) {
 
-    ReactDOM.render(<AdminLogin />, document.getElementById('ADMIN-LOGIN-REACTJS'));
-}
+//     ReactDOM.render(<AdminLogin />, document.getElementById('ADMIN-LOGIN-REACTJS'));
+// }
 

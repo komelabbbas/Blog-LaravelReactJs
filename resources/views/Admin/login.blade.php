@@ -46,25 +46,12 @@
         
       
     </head>
-<body class="login-page login-1">
+<body>
        
-       
-<div id="app" class="login-wrapper">
-       
-    <div class="login-box">
-        <div class="logo-main">
-            <a href="index.html"><img src="{{ asset('assets/global/img/logo-large.png') }}" alt="Laraspace Logo"></a>
-        </div>
 
         {{-- <div id="ADMIN-LOGIN-REACTJS"> </div> --}}
-        <div id="ADMIN-LOGIN-REACTJS"> </div>
-
-        <div class="page-copyright">
-            <p>Powered by <a href="http://bytefury.com/" target="_blank">Bytefury</a></p>
-            <p>Laraspace © 2017</p>
-        </div>
-    </div>
-</div>
+        {{-- <div id="ADMIN-REACTJS"> </div> --}}
+        
 <!-- START GLOBAL  SCRIPT -->
 <script src="{{ asset('assets/global/js/core/plugins.js') }}"></script>
 

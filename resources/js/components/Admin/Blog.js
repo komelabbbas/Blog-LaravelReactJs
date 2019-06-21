@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import auth from "./Auth";
 
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -8,15 +9,19 @@ import 'react-notifications/lib/notifications.css';
 import Loading from 'react-loading-bar'
 import 'react-loading-bar/dist/index.css'
 
+
 let uri = '/admin/blog/1';
 let uriCategory = '/admin/category/';
 
+import AdminHeader from './AdminHeader';
+import Navigation from './Navigation';
 
 export class Blog extends Component {
 
     constructor(props) {
         super(props)
     
+
         this._InputTextChange = this._InputTextChange.bind(this)
         this._SaveBlog = this._SaveBlog.bind(this)
         this._handleImageChange = this._handleImageChange.bind(this)
@@ -38,40 +43,44 @@ export class Blog extends Component {
     
     componentDidMount() {
       
-        axios
-        .get(uri)
-        .then(
-          (response) => 
-          { 
-            
-          
-            this.setState({
-                BlogTitle : response.data.title ,
-                BlogDescription : response.data.description ,
-                CategoryId : response.data.Categoryid ,
-                imagePreviewUrl : '/images/'+response.data.photo ,
-                LoadingShow: false
-                },
-            )
-            
-          } ,
-          (error) => { console.log(error) }  
-      ); // blog data
+      if (auth.isAuthenticated() != false) {
+            axios
+            .get(uri)
+            .then(
+              (response) => 
+              { 
+                
+              
+                this.setState({
+                    BlogTitle : response.data.title ,
+                    BlogDescription : response.data.description ,
+                    CategoryId : response.data.Categoryid ,
+                    imagePreviewUrl : '/images/'+response.data.photo ,
+                    LoadingShow: false
+                    },
+                )
+                
+              } ,
+              (error) => { console.log(error) }  
+          ); // blog data
 
-      axios
-      .get(uriCategory + '0')
-      .then(
-        (response) => 
-        { 
-          
-          this.setState({
-            Categories : response.data ,
-              },
-          )
-        } ,
-        (error) => { console.log(error) }  
-    ); // category data
+          axios
+          .get(uriCategory + '0')
+          .then(
+            (response) => 
+            { 
+              
+              this.setState({
+                Categories : response.data ,
+                  },
+              )
+            } ,
+            (error) => { console.log(error) }  
+        ); // category data
  
+      }
+      
+       
 
     }  // end of componentDidMount
 
@@ -167,10 +176,18 @@ export class Blog extends Component {
         //  let path =  '/images/' + this.state.imagePreviewUrl
         let path =  this.state.imagePreviewUrl
         
+        if (auth.isAuthenticated() === false) {
+          return auth.RedirectTo()
+        }
       
         return (
 
+        <div>
+           <AdminHeader />
+           <Navigation />   
+        
         <div className="main-content">
+            
             
                   {/* Loading Bar Show ************  */}
                   <Loading
@@ -295,7 +312,7 @@ export class Blog extends Component {
 
 
         </div>
-
+      </div>
         )
     }
 }

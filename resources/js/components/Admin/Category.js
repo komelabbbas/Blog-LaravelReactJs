@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import auth from "./Auth";
 
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -8,7 +9,8 @@ import 'react-notifications/lib/notifications.css';
 import Loading from 'react-loading-bar'
 import 'react-loading-bar/dist/index.css'
 
-
+import AdminHeader from './AdminHeader';
+import Navigation from './Navigation';
 
 let uri = '/admin/category/';
  class Category extends Component {
@@ -19,17 +21,28 @@ let uri = '/admin/category/';
         this._AddCategory = this._AddCategory.bind(this)
         this._DeleteCategory = this._DeleteCategory.bind(this)
         
-        this.state = {
+        
+      
+             this.state = {
              categoryies : [] ,
              category_text : '' ,
              LoadingShow : false ,
+            
         }
     } // end of constructor
 
+    
+
+
     componentDidMount(){
 
-         this._GetList() ;
+        if (auth.isAuthenticated() != false) {
+          this._GetList() ;
+        }
+     
     }
+  
+  
 
    _GetList() {
 
@@ -123,8 +136,16 @@ let uri = '/admin/category/';
     } // end of _DeleteCategory
 
     render() {
+
+      if (auth.isAuthenticated() === false) {
+        return auth.RedirectTo()
+      }
+      
         return (
-          
+        <div>
+          <AdminHeader />
+          <Navigation />   
+        
         <div className="main-content">
            
                   {/* Loading Bar Show ************  */}
@@ -135,7 +156,7 @@ let uri = '/admin/category/';
                    
           <div className="page-header">
 
-              <h3 className="page-title">Category</h3>
+              <h3 className="page-title">Category    </h3>
 
               <ol className="breadcrumb">
                   <li className="breadcrumb-item"><a href="dashboard/basic.html">Home</a></li>
@@ -255,8 +276,8 @@ let uri = '/admin/category/';
 
 
 
-</div>
-
+    </div>
+  </div>
         )
     }
 }

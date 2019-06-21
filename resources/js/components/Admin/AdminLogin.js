@@ -42,6 +42,7 @@ export class AdminLogin extends Component {
         if(this.state.UserEmail === '' || this.state.userPassword === '')
         {
             NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
+            
         }
         else{
             axios
@@ -49,23 +50,41 @@ export class AdminLogin extends Component {
             .then(
 
               (response) => {
-                    console.log(response.data)
-                    if(response.data > 0)
+                    // console.log(response.data);
+                    // console.log(response.data.success);
+                    // console.log(response.data.token);
+
+                    if(response.data.success === true)
                     {
                         this.setState({
-                            LoginVerify : true
-                        })
-                      
-                        window.location.href = '/admin/dashboard'
+                                    LoginVerify : true
+                                })
+                        localStorage.setItem("token" , response.data.token) ;
                         
                     }
                     else{
                         NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
                     }
+                    // if(response.data > 0)
+                    // {
+                    //     this.setState({
+                    //         LoginVerify : true
+                    //     })
+                      
+                    //     // window.location.href = '/admin/dashboard'
+                    //     localStorage.setItem("token" , "mytoken12345") ;
+                    //     // this.props.LoginTrue()
+                    // }
+                    // else{
+                    //     NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
+                    // }
                     
                 } ,
 
-              (error) => { console.log(error) }  
+              (error) => { 
+                  console.log(error)  
+                  NotificationManager.error('Enter Valid Email & Password !' , '' , 2000); 
+                }  
 
             );
         } // else
@@ -76,17 +95,32 @@ export class AdminLogin extends Component {
     } // end of _FormSubmit
 
     render() {
-
+        if(this.state.LoginVerify)
+        {
+            return <Redirect to='/admin/dashboard' />
+        }
+                
+                    
+                
         return (
-            
+            <div className="login-page login-1">       
+                <div id="app" className="login-wrapper">
+                    
+                    <div className="login-box">
+                        <div className="logo-main">
+                            
+                            <a href="index.html"><img src="/assets/global/img/logo-large.png" alt="Laraspace Logo"/></a>
+                        </div>
+
+
             <div id="app" className="login-wrapper">
 
-                {this.state.LoginVerify ? 
+                {/* {this.state.LoginVerify ? 
                     <Router>
                     <Redirect to='/admin/dashboard' />
                     </Router>
                     
-                : ''}
+                : ''} */}
             
             
                 <form  onSubmit={this._FormSubmit}  id="loginForm">
@@ -151,6 +185,14 @@ export class AdminLogin extends Component {
                 <NotificationContainer/> 
 
             </div>
+
+            <div className="page-copyright">
+                <p>Powered by <a href="http://bytefury.com/" target="_blank">Bytefury</a></p>
+                <p>Laraspace © 2017</p>
+            </div>
+        </div>
+    </div>
+    </div>
         )
     }
 }

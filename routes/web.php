@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('Home');
 });
+
+
 Route::get('/article', function () {
     return view('Home');
 });
@@ -25,11 +27,15 @@ Route::get('/contact', function () {
 });
 
 Route::get('/admin', function () {
-    // return view('Admin.AdminHome') ;
-    return view('Admin.login');
+     return view('Admin.AdminHome') ;
+    // return view('Admin.login');
 });
 
+
 Route::get('/admin/dashboard', function () {
+    return view('Admin.AdminHome') ;
+});
+Route::get('/admin/logout', function () {
     return view('Admin.AdminHome') ;
 });
 
@@ -53,3 +59,6 @@ Route::resource('/admin/blog', 'BlogResourceController');
 
 
 Route::resource('Todo', 'TodoController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
