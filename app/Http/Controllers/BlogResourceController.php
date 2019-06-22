@@ -47,8 +47,9 @@ class BlogResourceController extends Controller
      */
     public function show($id)
     {
-        $Blog = Blog::find($id);
-        return $Blog ;
+        
+         $Blog = Blog::with('category')->find($id);
+         return $Blog ;
     }
 
     /**

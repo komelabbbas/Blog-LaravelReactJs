@@ -8,4 +8,9 @@ class Category extends Model
 {
     protected $table = 'categories';
     protected $guarded = [];
+
+    public function Blog()
+    {
+        return $this->belongsTo('App\Blog', 'id', 'id');
+    }
 }

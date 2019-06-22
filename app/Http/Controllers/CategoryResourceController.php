@@ -51,7 +51,6 @@ class CategoryResourceController extends Controller
      */
     public function show($id)
     {
-        // $Category = Category::all('name');
         $Category = Category::all();
         return $Category ;
     }

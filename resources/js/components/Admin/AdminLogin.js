@@ -65,20 +65,7 @@ export class AdminLogin extends Component {
                     else{
                         NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
                     }
-                    // if(response.data > 0)
-                    // {
-                    //     this.setState({
-                    //         LoginVerify : true
-                    //     })
-                      
-                    //     // window.location.href = '/admin/dashboard'
-                    //     localStorage.setItem("token" , "mytoken12345") ;
-                    //     // this.props.LoginTrue()
-                    // }
-                    // else{
-                    //     NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
-                    // }
-                    
+                   
                 } ,
 
               (error) => { 
@@ -115,12 +102,7 @@ export class AdminLogin extends Component {
 
             <div id="app" className="login-wrapper">
 
-                {/* {this.state.LoginVerify ? 
-                    <Router>
-                    <Redirect to='/admin/dashboard' />
-                    </Router>
-                    
-                : ''} */}
+                
             
             
                 <form  onSubmit={this._FormSubmit}  id="loginForm">

@@ -17,15 +17,7 @@
     </head>
     <body>
 
-            {{-- <div class="row">
-                    <div class="container-fluid" id="wholesection">
-                            <div className="col-md-12" id="mainsection">
-                    
            
-                    
-                            </div>
-                     </div>
-           </div> --}}
            <div id="FRONT-REACTJS"> </div>
       
         <script src="{{ asset('js/app.js') }}"></script>

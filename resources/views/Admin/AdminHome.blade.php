@@ -45,8 +45,10 @@
 </head>
 <body>
 
+    
+    
     <div id="ADMIN-REACTJS"> </div>
-    {{-- <div id="ADMIN-LOGIN-REACTJS"> </div> --}}
+    
 
 <!-- START GLOBAL  SCRIPT -->
 <script src="{{ asset('assets/global/js/core/plugins.js') }}"></script>

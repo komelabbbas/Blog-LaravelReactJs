@@ -47901,7 +47901,7 @@ if(false) {}
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54284,14 +54284,7 @@ function (_Component) {
         exact: true,
         path: "/admin/blog",
         component: _Blog__WEBPACK_IMPORTED_MODULE_4__["default"]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-        className: "site-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-right"
-      }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://bytefury.com/",
-        target: "_blank"
-      }, "Bytefury"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "skin-tools"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "skin-tools-action"
@@ -54628,19 +54621,7 @@ function (_Component) {
             localStorage.setItem("token", response.data.token);
           } else {
             react_notifications__WEBPACK_IMPORTED_MODULE_3__["NotificationManager"].error('Enter Valid Email & Password !', '', 2000);
-          } // if(response.data > 0)
-          // {
-          //     this.setState({
-          //         LoginVerify : true
-          //     })
-          //     // window.location.href = '/admin/dashboard'
-          //     localStorage.setItem("token" , "mytoken12345") ;
-          //     // this.props.LoginTrue()
-          // }
-          // else{
-          //     NotificationManager.error('Enter Valid Email & Password !' , '' , 2000);
-          // }
-
+          }
         }, function (error) {
           console.log(error);
           react_notifications__WEBPACK_IMPORTED_MODULE_3__["NotificationManager"].error('Enter Valid Email & Password !', '', 2000);
@@ -55964,7 +55945,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Article).call(this, props));
     _this.state = {
-      blog: []
+      blog: [],
+      CategoryName: ''
     };
     return _this;
   }
@@ -55976,7 +55958,8 @@ function (_Component) {
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(uri).then(function (response) {
         _this2.setState({
-          blog: response.data
+          blog: response.data,
+          CategoryName: response.data.category.name
         });
       }, function (error) {
         console.log('error' + error);
@@ -55986,13 +55969,20 @@ function (_Component) {
     key: "render",
     value: function render() {
       var path = '/images/' + this.state.blog.photo;
+      var cat = {
+        "float": 'right',
+        paddingRight: '20px',
+        fontStyle: 'italic'
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "BlogStyle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "dateformat"
-      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_2___default.a, {
         format: "MMMM DD, YYYY"
-      }, this.state.blog.updated_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.state.blog.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.blog.updated_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: cat
+      }, this.state.CategoryName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.state.blog.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.blog.description)), typeof this.state.blog.photo != 'undefined' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "imageeffect"
@@ -56441,10 +56431,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import { BrowserRouter as Router, Route  , NavLink }  from "react-router-dom";
-// import Blog from './Front/Blog';
-// import AdminIndex from './Admin/Index';
-// import Dashboard from './Admin/Dashboard';
 
 
 
@@ -56479,9 +56465,7 @@ if (document.getElementById('FRONT-REACTJS')) {
 
 if (document.getElementById('ADMIN-REACTJS')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Admin_AdminApp__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById('ADMIN-REACTJS'));
-} // if (document.getElementById('ADMIN-LOGIN-REACTJS')) {
-//     ReactDOM.render(<AdminLogin />, document.getElementById('ADMIN-LOGIN-REACTJS'));
-// }
+}
 
 /***/ }),
 

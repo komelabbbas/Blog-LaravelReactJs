@@ -40,11 +40,11 @@ export class AdminApp extends Component {
                         
                     </Router> 
 
-                <footer className="site-footer">
+                {/* <footer className="site-footer">
                     <div className="text-right">
                         Powered by <a href="http://bytefury.com/" target="_blank">Bytefury</a>
                     </div>
-                </footer>
+                </footer> */}
 
                 <div className="skin-tools">
 

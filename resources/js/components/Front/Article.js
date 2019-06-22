@@ -15,6 +15,7 @@ export class Article extends Component {
             this.state = {
                
                 blog : [] ,
+                CategoryName : ''
              
                
             }
@@ -28,9 +29,9 @@ export class Article extends Component {
           (response) => 
           { 
             
-           
             this.setState({
                 blog : response.data ,
+                CategoryName : response.data.category.name
                 },
             )
             
@@ -45,11 +46,21 @@ export class Article extends Component {
     render() {
          let path = '/images/'+this.state.blog.photo ;
 
+        const cat = {
+            
+            float :  'right', 
+            paddingRight : '20px' ,
+            fontStyle: 'italic' ,
+            
+        }
+
         return (
             <div id="BlogStyle">
-                {/* {console.log(this.state.blog)} */}
-
-                    <p className="dateformat"> <Moment format="MMMM DD, YYYY">{ this.state.blog.updated_at }</Moment></p>
+               
+                    <p className="dateformat"> 
+                        <Moment format="MMMM DD, YYYY">{ this.state.blog.updated_at }</Moment>
+                        <span style={cat}>{ this.state.CategoryName }</span>
+                    </p>
                 
                     <h3>{this.state.blog.title}</h3>
 

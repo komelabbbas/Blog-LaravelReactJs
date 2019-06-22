@@ -36,7 +36,6 @@ export class AdminHeader extends Component {
       <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="avatar"><img src="/assets/global/img/avatars/avatar.png" alt="Avatar" /></a>
       <div className="dropdown-menu dropdown-menu-right notification-dropdown">
         <a className="dropdown-item" href="settings.html"><i className="icon-fa icon-fa-cogs" /> Settings</a>
-        {/* <a className="dropdown-item" href="../login.html"><i className="icon-fa icon-fa-sign-out" /> Logout</a> */}
         <NavLink  exact activeClassName="active" to="/admin/logout" >
             <i className="icon-fa icon-fa-sign-out" /> Logout
         </NavLink>
